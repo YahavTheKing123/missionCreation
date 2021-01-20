@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 19 20" version="1.1">
+    <title>Icons/stopwatch</title>
+    <defs>
+        <path d="M9.03651146,4.72921181 L9.04656319,4.72921181 L9.04656319,11.0569106 L14.4286211,11.0569106 C14.47736,10.7656843 14.5027233,10.4666975 14.5027233,10.1619262 C14.5027233,7.16540145 12.0508727,4.72921181 9.03651146,4.72921181 L9.03651146,4.72921181 Z M15.6590596,4.32913713 L14.3635454,5.61583265 C15.4201376,6.83796281 16.0626755,8.42442611 16.0626755,10.1619262 C16.0626755,14.0197069 12.9172551,17.1465154 9.03651146,17.1465154 C5.15576781,17.1465154 2.01034738,14.0197069 2.01034738,10.1619262 C2.01034738,6.57278362 4.73591449,3.61891809 8.24087782,3.22576112 L8.24087782,2.55589544 L7.33506169,2.55589544 C6.90477003,2.55589544 6.55450566,2.2088566 6.55450566,1.78111104 C6.55450566,1.35221253 6.90477003,1.00517369 7.33506169,1.00517369 L10.707806,1.00517369 C11.1380977,1.00517369 11.4872022,1.35221253 11.4872022,1.78111104 C11.4872022,2.2088566 11.1380977,2.55589544 10.707806,2.55589544 L9.80083006,2.55589544 L9.80083006,3.22114931 C11.0754676,3.35835072 12.2434021,3.83797916 13.219967,4.55972772 L14.5560748,3.23152589 L15.6590596,4.32913713 Z" id="path-1"/>
+        <filter x="-49.8%" y="-31.0%" width="199.6%" height="186.7%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.0610795455 0" type="matrix" in="shadowBlurOuter1"/>
+        </filter>
+    </defs>
+    <g id="New-Bakash" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="New-Bakash-4" transform="translate(-1055.000000, -467.000000)">
+            <g id="Popups/Bakash-Expansion-full" transform="translate(723.000000, 237.000000)">
+                <g id="Popup/Plan-" transform="translate(20.000000, 199.000000)">
+                    <g id="Plan/Fire-Plan/Plan-Light-2" transform="translate(93.000000, 28.000000)">
+                        <g id="Group-8" transform="translate(132.000000, 3.000000)">
+                            <g id="Shape" transform="translate(87.000000, 0.953437)">
+                                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"/>
+                                <use fill="#3C556E" fill-rule="evenodd" xlink:href="#path-1"/>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

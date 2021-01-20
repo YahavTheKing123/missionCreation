@@ -1,0 +1,191 @@
+.fire-history-wrapper {
+  height: 675px;
+  overflow: auto;
+  padding: 0 20px;
+}
+.empty-history-wrapper {
+  height: 100%;
+  width: 100%;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 0 0 5px 0 rgba(141, 141, 141, 0.19);
+  border-radius: 9px;
+}
+.empty-history-image {
+  background-image: url(../assets/empty-fire-history.svg);
+  height: 179px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 248px;
+  display: inline-block;
+  margin-bottom: 35px;
+}
+.empty-history-text-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.empty-history-text-header {
+  font-size: 24px;
+  color: #102235;
+  font-weight: 700;
+}
+.empty-history-text-value {
+  font-size: 22px;
+  color: #5C7592;
+}
+.carpet-wrapper:first-child .carpet-header {
+  margin-top: 0;
+}
+.carpet-header {
+  margin-top: 15px;
+  background: #FFFFFF;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  border-radius: 5px;
+}
+.carpet-header.current:before {
+  content: '';
+  position: absolute;
+  background-color: #4DA0FB;
+  height: 80%;
+  border-radius: 3px;
+  width: 3px;
+  right: 5px;
+}
+.carpet-header-details {
+  display: flex;
+  align-items: center;
+}
+.carpet-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #3C556E;
+}
+.carpet-name.current {
+  color: #2A90FF;
+}
+.carpet-extender {
+  background-image: url('../assets/arrow-down.svg');
+  width: 15px;
+  height: 15px;
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+.carpet-extender.open {
+  transform: rotate(-180deg);
+}
+.history-cards-container {
+  display: none;
+  background: #F8F8F8;
+  padding: 0 20px 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.history-cards-container.open {
+  display: inherit;
+}
+.carpet-history-header {
+  font-size: 15px;
+  color: #5C7592;
+  padding: 15px;
+  display: flex;
+}
+.carpet-history-header-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fire-history-card-wrapper {
+  background-color: #ffffff;
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
+.fire-history-card-upper-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px 15px;
+  position: relative;
+  box-shadow: 0 0 5px 0 rgba(141, 141, 141, 0.19);
+  border-radius: 10px;
+}
+.fire-history-card-upper-section.current:before {
+  content: '';
+  position: absolute;
+  background-color: #4DA0FB;
+  height: 90%;
+  border-radius: 4px;
+  width: 7px;
+  right: 5px;
+}
+.fire-history-card-wrapper.current {
+  border-color: #4DA0FB;
+}
+.fire-history-card-icon-wrapper {
+  border-radius: 50%;
+  background-color: #DE4949;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  opacity: 0.86;
+}
+.fire-history-card-icon-wrapper.current {
+  opacity: 1;
+  background-color: #4DA0FB;
+}
+.fire-history-card-icon {
+  background-image: url('../assets/fire.svg');
+  width: 28px;
+  height: 28px;
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.fire-history-card-rectangle-weight {
+  background-color: #94AABF;
+  height: 4px;
+  width: 4px;
+  border-radius: 1px;
+  margin-right: 4px;
+  margin-top: 10px;
+}
+.fire-history-card-item {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.fire-history-card-item.hour {
+  font-size: 18px;
+  color: #374B60;
+}
+.fire-history-card-item > .top {
+  opacity: 0.75;
+  font-size: 14px;
+  color: #708DA9;
+  margin-bottom: 5px;
+}
+.fire-history-card-item > .bottom {
+  font-size: 14px;
+  color: #102235;
+  font-weight: 700;
+}
+.pagaz > .top {
+  display: flex;
+  justify-content: center;
+}

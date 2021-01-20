@@ -1,0 +1,38 @@
+.ContextMenuWrapper {
+    position: fixed;    
+    font-size: 20px;
+    color: #4C657F;    
+    z-index: 1;
+    background: #FFFFFF;
+    box-shadow: 0 0 16px 0 rgba(0,0,0,0.33);
+    border-radius: 17px;    
+    display: flex;
+    transform: translate(-50%,50%);
+    max-width: 400px;
+    overflow-x: auto;
+}
+
+.all-fire-context-menu-item {
+    border-right: 1px solid #ececec;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 130px;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 120px;
+    justify-content: center;
+}
+.all-fire-context-menu-item:first-child {
+    border: none;
+}
+.all-fire-context-menu-item-icon {
+    margin-bottom: 1rem;
+}
+.all-fire-context-menu-item-text {
+    max-width: 90%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
