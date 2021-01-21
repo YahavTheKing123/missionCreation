@@ -1,0 +1,44 @@
+{
+    "participates": [
+        {
+            "entityId": "1",
+            "mainIcon": "./assets/mission.svg",
+            "seconaryIconTop": "./assets/wifi.svg",
+            "seconaryIconBottom": "./assets/shield.svg",
+            "mainText": "כוח דלתא",
+            "secondaryText": "מרחק עלום",
+            "infoText1": "מרחבי",
+            "infoText2": "לא מוכן"
+        },
+        {
+            "entityId": "2",
+            "mainIcon": "./assets/mission.svg",
+            "seconaryIconTop": "./assets/wifi.svg",
+            "seconaryIconBottom": "./assets/shield.svg",
+            "mainText": "כוח דלתא",
+            "secondaryText": "מרחק עלום",
+            "infoText1": "מרחבי",
+            "infoText2": "לא מוכן"
+        },
+        {
+            "entityId": "3",
+            "mainIcon": "./assets/mission.svg",
+            "seconaryIconTop": "./assets/wifi.svg",
+            "seconaryIconBottom": "./assets/shield.svg",
+            "mainText": "כוח דלתא",
+            "secondaryText": "מרחק עלום",
+            "infoText1": "מרחבי",
+            "infoText2": "לא מוכן"
+        },
+        {
+            "entityId": "4",
+            "mainIcon": "./assets/mission.svg",
+            "seconaryIconTop": "./assets/wifi.svg",
+            "seconaryIconBottom": "./assets/shield.svg",
+            "mainText": "כוח דלתא",
+            "secondaryText": "מרחק עלום",
+            "infoText1": "מרחבי",
+            "infoText2": "לא מוכן"
+        }
+    ]
+}

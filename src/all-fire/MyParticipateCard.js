@@ -3,9 +3,10 @@ import './AllFire.css';
 
 export default class MyParticipateCard extends Component {
 
-    renderCardRightImages() {
+    renderCardRightImages(selectedClass) {
+        const externalClass = this.props.isExternal ? 'external' : '';
         return (
-            <div className='my-participate-card-right'>
+            <div className={`my-participate-card-right ${externalClass} ${selectedClass}`}>
                 <div className='right-images'>
                     <img className='top-image' src={require('./assets/wifi.svg')} style={{width: '2rem', height: '2rem'}}/>
                     <img className='bottom-image' src={require('./assets/shield.svg')} style={{width: '2rem', height: '2rem'}}/>
@@ -20,9 +21,10 @@ export default class MyParticipateCard extends Component {
     }
 
     render() {
+        const selectedClass = this.props.isSelected ? 'selected' : '';
         return (
-            <div className='my-participate-card'>            
-                {this.renderCardRightImages()}                
+            <div className={`my-participate-card ${selectedClass}`} onClick={() => this.props.onParticiapteClick(this.props.participateId)}>
+                {this.renderCardRightImages(selectedClass)}                
                 <div className='my-participate-card-center'>
                     <div className='my-participate-card-center-row'>
                         <span>{'xcxc cxcx xcxc'}</span>
@@ -30,7 +32,7 @@ export default class MyParticipateCard extends Component {
                     </div>
                 </div>
                 <div className='my-participate-card-left'>
-                    {this.renderExpandButton()}
+                    {/*this.renderExpandButton()*/}
                 </div>
             </div>
         )

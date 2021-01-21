@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './AllFire.css';
-import ContextMenu from './ui-component/ContextMenu/ContextMenu';
-import MyParticipateCard from './MyParticipateCard';
+import ParticipateCard from './MyParticipateCard';
+import Icon from './ui-component/Icon/Icon';
+import HeaderCard from './HeaderCard';
 
-const widgetSizes = {
+export const widgetSizes = {
     default: 'default',
     minimized: 'minimized'
 }   
@@ -16,72 +17,146 @@ const paticipatesOptions = {
 export default class AllFire extends Component {
 
     state = {
-        widgetSize: widgetSizes.default,
-        isContextMenuOpen: false,
-        openParticipates: paticipatesOptions.me
+        isAppLoading: true,
+        mainEnt: null,
+        widgetSize: widgetSizes.default,        
+        openParticipates: paticipatesOptions.my,
+        selectedParticipate: null,
+        participatesInterval: null,
+        participates: null
+    }
+    
+    componentDidMount() {
+        fetch('./data/MissionEntity.json')
+            .then(response => response.json())
+            .then(data => {
+                this.setState({
+                    mainEnt: data,
+                    isAppLoading: false
+                });
+            });
     }
 
-    moreActionBtnRef = React.createRef()
+    componentDidUpdate(prevProps, prevState) {
+        if (!prevState.mainEnt && this.state.mainEnt) {
+            const intervalInMilliSeconds = 
+                this.state.mainEnt.CommonX && 
+                    this.state.mainEnt.CommonX.allFire && 
+                        this.state.mainEnt.CommonX.allFire.participatesRestIntervalInMilliSeconds;
 
-    renderHeaderRightImages() {
-        return (
-            <div className='all-fire-header-right-icons-wrapper'>
-                <img className='all-fire-header-right-main-icon' src={require('./assets/mission.svg')} style={{width: '5rem', height: '5rem'}}/>
-                <img className='all-fire-header-right-main-icon' src={require('./assets/missionType.svg')} style={{width: '2rem', height: '2rem'}}/>
-            </div>
-        )
+            const restUrl = 
+                this.state.mainEnt.CommonX && 
+                    this.state.mainEnt.CommonX.allFire && 
+                        this.state.mainEnt.CommonX.allFire.participatesRestQuerySname;
+            
+            if (intervalInMilliSeconds && restUrl) {  
+                this.fetchParticipates();
+                this.setState({
+                    participatesInterval: setInterval(this.fetchParticipates, intervalInMilliSeconds)
+                })
+            }
+        }
     }
 
-    renderActionsMenuButton() {
-        return (
-            <span className='more-actions-btn-wrapper' ref={this.moreActionBtnRef} onClick={()=>this.setState({isContextMenuOpen: !this.state.isContextMenuOpen})}>
-                <span className={'more-actions-btn-ball'}></span>
-                <span className={'more-actions-btn-ball'}></span>
-                <span className={'more-actions-btn-ball'}></span>
-            </span>
-        )
+    fetchParticipates = () => {
+        const {participatesRestQuerySname} = this.state.mainEnt.CommonX.allFire;
+        const option = this.state.openParticipates === paticipatesOptions.my ? 1 : 2;
+        const url = `${participatesRestQuerySname}${option}`;
+        //Globals.get().clientFacade.exeRestQuary(participatesRestQuerySname, params);
+        console.log('Fetching from URL', url)
+        //fetch(url)
+        fetch('./data/participates.json')
+            .then(response => response.json())
+            .then(data => {
+                this.setState({participates: data.participates}, this.removeSelectionForNonExistingParticipate);
+                console.log(data);
+            });
+    }
+
+    removeSelectionForNonExistingParticipate = () => {
+        if (!this.state.selectedParticipate) return;
+
+        const isSelectedInLatestResponse = this.state.participates.some(item => item.entityId === this.state.selectedParticipate); 
+        if (!isSelectedInLatestResponse) {
+            this.setState({selectParticipate: null})
+        }
+    }
+
+    setWidgetSize = widgetSize => {
+        this.setState({widgetSize})
     }
 
     renderHeader() {
         return (
-            <div className='all-fire-header'>
-                <a className='all-fire-header-minimize-button' href='#' onClick={() => this.setState({widgetSize: widgetSizes.minimized})}>
-                    <div className='minimize-icon'></div>
-                </a>
-                <div className='all-fire-header-right'>
-                    <span className='all-fire-header-right-top-text'>{'רטוב'}</span>
-                    {this.renderHeaderRightImages()}
-                    <span className='all-fire-header-buttom-top-text' style={{backgroundColor: '#102235'}}>{'חדשה'}</span>
-                </div>
-                <div className='all-fire-header-center'>
-                    <div className='all-fire-header-center-row'>
-                        <span>{'גונזו 123א'}</span>
-                        <span>{'תקיפה'}</span>
-                    </div>
-                    <div className='all-fire-header-center-row'>
-                        <span>{'שטח פתוח'}</span>
-                    </div>
-                </div>
-                <div className='all-fire-header-left'>
-                    {this.renderActionsMenuButton()}
-                </div>
+            <HeaderCard 
+                entity={this.state.mainEnt}
+                setWidgetSize={this.setWidgetSize}/>
+        )
+    }
+    
+    switchOpenParticipates = newparticipates => {
+        this.setState({
+            openParticipates: newparticipates,
+            selectedParticipate: null
+        })
+    }
+
+    renderMySuggestedParticipatesButton() {
+        if (this.state.openParticipates === paticipatesOptions.my) {
+            return null;
+        }
+        return (
+            <div className='all-fire-participates-button' onClick={() => this.switchOpenParticipates(paticipatesOptions.my)}>
+                <Icon className='all-fire-my-participates-expand-btn' iconUri={require('./assets/arrow-down.svg')}/>
+                <Icon className='all-fire-participates-logo' iconUri={require('./assets/tank.svg')}/>
+                <span className={'label'}>{'שלי'}</span>
             </div>
         )
     }
 
-    renderMySuggestedParticipatesList() {
-        const myParticipates = [];
-        for (let index = 0; index < 10; index++) {
-            myParticipates.push(
-                <MyParticipateCard />
-            );
-            
+    renderOtherSuggestedParticipatesButton() {
+        if (this.state.openParticipates === paticipatesOptions.other) {
+            return null;
         }
-
-        return <div className='all-fire-my-particiaptes-wrapper'>{myParticipates}</div>;
+        return (
+            <div className='all-fire-participates-button' onClick={()=>this.switchOpenParticipates(paticipatesOptions.other)}>
+                <Icon className='all-fire-participates-logo' iconUri={require('./assets/mission.svg')}/>
+                <span className={'label'}>{'סיוע אש'}</span>
+                <Icon className='all-fire-other-participates-expand-btn' iconUri={require('./assets/arrow-down.svg')}/>
+            </div>
+        );
     }
 
-    OtherSuggestedParticipatesClick = () => {
+    selectParticipate = (participateId) => {
+        if (participateId === this.state.selectedParticipate) {
+            this.setState({selectedParticipate: null})    
+        } else {
+            this.setState({selectedParticipate: participateId})
+        }
+    }
+
+    renderSuggestedParticipatesList() {
+        //const closedClass = this.state.openParticipates === paticipatesOptions.other ? 'closed' : ''
+        const {participates} = this.state;
+        let res = [];
+
+        if (participates) {
+            res = participates.map( item => 
+                <ParticipateCard
+                    key={item.entityId}
+                    isExternal={this.state.openParticipates === paticipatesOptions.other}
+                    isSelected={item.entityId === this.state.selectedParticipate}
+                    onParticiapteClick={this.selectParticipate}
+                    participateId={item.entityId}
+                />
+            );
+        }        
+
+        return <div className={`all-fire-my-participates-wrapper`}>{res}</div>;
+    }
+
+    otherSuggestedParticipatesClick = () => {
+        
         /*
             1. clear selected my particiate
             2. close my particiates card list and open group it to one card
@@ -89,56 +164,50 @@ export default class AllFire extends Component {
         */
     }
 
-    renderOtherSuggestedParticipatesButton() {
-        return (
-            <div className='all-fire-other-particiaptes-button' onClick={this.OtherSuggestedParticipatesClick}>
-                <img className='all-fire-other-particiaptes-logo' src={require('./assets/mission.svg')}/>
-                <span className={'label'}>{'סיוע חיצוני'}</span>
-                <img className='all-fire-other-particiaptes-expand-btn' src={require('./assets/arrow-down.svg')}/>
-            </div>
-        );
-    }
-
     renderFooter() {
         return (
             <div className='all-fire-footer-wrapper'>
                 <button className='all-fire-button'>{'בטל משימה'}</button>
-                <button className='all-fire-button primary'>{'אשר'}</button>
+                <button className='all-fire-button primary disabled'>{'אשר'}</button>
             </div>
         );
     }
 
-    renderContextMenu() {
-        if (this.state.isContextMenuOpen) {
-            const xy = this.moreActionBtnRef.current.getClientRects();
-            return (
-                <ContextMenu top={xy[0].top} left={xy[0].left} onCloseContextMenu={()=>this.setState({isContextMenuOpen: false})}>
-                    <div className={'all-fire-context-menu-item'} onClick={() => this.props.selectAllBranchesForTab('master')}>
-                        <img className={'all-fire-context-menu-item-icon'} style={{height: '3rem', width: '3rem'}} src={require('./assets/context-menu-test-icon.svg')}/>
-                        <span className='all-fire-context-menu-item-text' title={'command title'} >{'command title'}</span>
-                    </div>
-                    <div className={'all-fire-context-menu-item'} onClick={() => this.props.selectAllBranchesForTab('develop')}>
-                        <img className={'all-fire-context-menu-item-icon'} style={{height: '3rem', width: '3rem'}} src={require('./assets/context-menu-test-icon.svg')}/>
-                        <span className='all-fire-context-menu-item-text' title={'command title'}>{'command title'}</span>
-                    </div>
-                    <div className={'all-fire-context-menu-item'} onClick={() => this.props.selectAllBranchesForTab('develop')}>
-                        <img className={'all-fire-context-menu-item-icon'} style={{height: '3rem', width: '3rem'}} src={require('./assets/context-menu-test-icon.svg')}/>
-                        <span className='all-fire-context-menu-item-text' title={'command title'}>{'command title'}</span>
-                    </div>
-                </ContextMenu>
-            )
+    renderComponentBodyDraft() {
+        return(
+            <>
+                {this.renderSuggestedParticipatesList()}
+                {this.renderOtherSuggestedParticipatesButton()}
+                {this.renderMySuggestedParticipatesButton()}
+            </>
+        )
+    }
+
+    renderComponentBodyAccordingToStatus() {
+        const missionState = this.state.mainEnt.CommonX.allFire.entityStateValue;
+        switch (missionState) {
+            case 1:
+                // initial
+                return this.renderComponentBodyDraft();
+            case 2:
+                return null;
+            case 3:
+                return null;
+            default:
+                break;
         }
     }
 
     render() {
+        if (this.state.isAppLoading) {
+            return null;
+        }
+        
         return (
-            <div className='all-fire-wrapper'>
+            <div className='all-fire-wrapper'>                      
                 {this.renderHeader()}
-                {this.renderMySuggestedParticipatesList()}
-                {this.renderOtherSuggestedParticipatesButton()}
-                {this.MySuggestedParticipatesButton()}
+                {this.renderComponentBodyAccordingToStatus()}
                 {this.renderFooter()}
-                {this.renderContextMenu()}
             </div>
         )
     }

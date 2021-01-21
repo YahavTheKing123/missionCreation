@@ -1,0 +1,19 @@
+{
+    "sname": "CommonX.valueSet.allFireMissionStateValueSet",
+    "schema": {
+      "literals": {
+        "drfat": {
+          "code": 1,
+          "dispName": "Draft"
+        },
+        "beforeSend": {
+          "code": 2,
+          "dispName": "Before Send"
+        },
+        "manage": {
+          "code": 3,
+          "dispName": "Manage"
+        }
+      }
+    }
+  }

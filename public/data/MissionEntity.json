@@ -1,0 +1,27 @@
+{
+    "_id": "12345",
+    "CommonX": {
+        "allFire": {
+            "mainHeaderRightTopText": "מנדל",
+            "mainHeaderRightButtomText": "עומר",
+            "mainHeaderRightButtomTextBGColor": "#2C83FB",
+
+            "mainHeaderRightMainIcon": "./assets/mission.svg",
+            "mainHeaderRightSecondaryIcon": "./assets/missionType.svg",
+            "mainHeaderRightSideIcon": "./assets/missionType.svg",
+                        
+            "entityStateValue": 1,
+
+            "mainHeaderTextRow1Col1": "גונזו משהו",
+            "mainHeaderTextRow1Col2": "תקיפה",
+            "mainHeaderTextRow2Col1": "שטח פתוח",
+            "mainHeaderTextRow2Col2": "03:22",
+            "mainHeaderTextRow2Col2BGColor": "",
+
+            "participatesRestQuerySname": "Zayad.restQuery.allFireGetParticipates",
+            "participatesRestIntervalInMilliSeconds": 10000,
+            "attackTypesValueSetSname": "Zayad.valueSet.attackTypes",
+            "attackTypesDetailsModelSname": "Zayad.entity.allFireMissionAttakDetails"
+        }
+    }
+}
