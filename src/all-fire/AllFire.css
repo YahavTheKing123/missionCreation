@@ -12,8 +12,13 @@
   --all-fire-footer-button-primary-bg-color: #4285F4;
   --all-fire-footer-button-disabled-bg-color: rgba(107, 120, 133, 0.7);
   --all-fire-selected-bg-color: #2C83FB;
+  --all-fire-attack-chocolate-bg-color: #2C3E50;
+  --all-fire-attack-chocolate-button-bg-color: #3C556E;
   color: var(--all-fire-font-primary-color);
   width: 51.5rem;
+  position: absolute;
+  top: 100px;
+  right: 140px;
 }
 .all-fire-header {
   width: 100%;
@@ -303,4 +308,90 @@
 }
 .all-fire-footer-wrapper .all-fire-button:last-child {
   margin-left: 0;
+}
+.external-assist-attack-first-row-wrapper {
+  width: 100%;
+  height: 11.5rem;
+  background-color: var(--all-fire-attack-chocolate-bg-color);
+  margin-bottom: 1rem;
+  border-radius: 1.1rem;
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  overflow: auto;
+}
+.external-assist-attack-first-row-wrapper .attack-type-button {
+  height: 8.5rem;
+  border-radius: 0.8rem;
+  background-color: var(--all-fire-attack-chocolate-button-bg-color);
+  min-width: 11rem;
+  margin-left: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.external-assist-attack-first-row-wrapper .attack-type-button.selected {
+  background-color: var(--all-fire-selected-bg-color);
+}
+.external-assist-attack-first-row-wrapper .attack-type-button .attack-description {
+  font-size: 1.8rem;
+  margin-top: 0.8rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 90%;
+}
+.external-assist-attack-first-row-wrapper .attack-type-button .attack-icon {
+  width: 3.4rem;
+  height: 3.4rem;
+}
+.external-assist-attack-first-row-wrapper .attack-type-button:last-child {
+  margin: 0;
+}
+.external-assist-attack-second-row-wrapper {
+  width: 100%;
+  height: 12.8rem;
+  background-color: var(--all-fire-attack-chocolate-bg-color);
+  box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+  border-radius: 0.9rem;
+  display: flex;
+  padding: 2.2rem 2rem;
+  overflow: overlay;
+}
+.external-assist-attack-second-row-wrapper .attack-type-details-button {
+  height: 7.2rem;
+  border-radius: 0.8rem;
+  background-color: var(--all-fire-attack-chocolate-button-bg-color);
+  min-width: 8rem;
+  margin-left: 1.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 0 13px 0 rgba(0, 0, 0, 0.14);
+}
+.external-assist-attack-second-row-wrapper .attack-type-details-button.selected {
+  background-color: var(--all-fire-selected-bg-color);
+}
+.external-assist-attack-second-row-wrapper .attack-type-details-button .attack-description {
+  font-size: 1.9rem;
+  position: absolute;
+  bottom: -2.2rem;
+  color: var(--all-fire-font-secondary-color);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 90%;
+}
+.external-assist-attack-second-row-wrapper .attack-type-details-button .attack-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+.external-assist-attack-second-row-wrapper .attack-type-details-button:last-child {
+  margin: 0;
 }

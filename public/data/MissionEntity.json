@@ -2,11 +2,11 @@
     "_id": "12345",
     "CommonX": {
         "allFire": {
-            "mainHeaderRightTopText": "מנדל",
+            "mainHeaderRightTopText": "אלי",
             "mainHeaderRightButtomText": "עומר",
-            "mainHeaderRightButtomTextBGColor": "#2C83FB",
+            "mainHeaderRightButtomTextBGColor": "#000000",
 
-            "mainHeaderRightMainIcon": "./assets/mission.svg",
+            "mainHeaderRightMainIcon": "./assets/tank.svg",
             "mainHeaderRightSecondaryIcon": "./assets/missionType.svg",
             "mainHeaderRightSideIcon": "./assets/missionType.svg",
                         
@@ -21,7 +21,7 @@
             "participatesRestQuerySname": "Zayad.restQuery.allFireGetParticipates",
             "participatesRestIntervalInMilliSeconds": 10000,
             "attackTypesValueSetSname": "Zayad.valueSet.attackTypes",
-            "attackTypesDetailsModelSname": "Zayad.entity.allFireMissionAttakDetails"
+            "attackTypesDetailsModelSname": "Zayad.entity.attackTypesDetails"
         }
     }
 }

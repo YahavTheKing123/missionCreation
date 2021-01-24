@@ -3,6 +3,8 @@ import './AllFire.css';
 import ParticipateCard from './MyParticipateCard';
 import Icon from './ui-component/Icon/Icon';
 import HeaderCard from './HeaderCard';
+import {ValueSet} from './mock/Mock';
+import {EntitiesMngr} from './mock/Mock';
 
 export const widgetSizes = {
     default: 'default',
@@ -23,7 +25,10 @@ export default class AllFire extends Component {
         openParticipates: paticipatesOptions.my,
         selectedParticipate: null,
         participatesInterval: null,
-        participates: null
+        participates: null,
+        attackTypeDetailsModelResponse: null,
+        selectedAttackType: null,
+        selectedAttackTypeDetails: null
     }
     
     componentDidMount() {
@@ -37,23 +42,60 @@ export default class AllFire extends Component {
             });
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        if (!prevState.mainEnt && this.state.mainEnt) {
-            const intervalInMilliSeconds = 
-                this.state.mainEnt.CommonX && 
-                    this.state.mainEnt.CommonX.allFire && 
-                        this.state.mainEnt.CommonX.allFire.participatesRestIntervalInMilliSeconds;
+    componentWillUnmount() {
+        if (this.state.participatesInterval) {
+            clearInterval(this.state.participatesInterval);
+        }
+    }
 
-            const restUrl = 
-                this.state.mainEnt.CommonX && 
-                    this.state.mainEnt.CommonX.allFire && 
-                        this.state.mainEnt.CommonX.allFire.participatesRestQuerySname;
-            
-            if (intervalInMilliSeconds && restUrl) {  
-                this.fetchParticipates();
+    handleParticipates() {
+        const intervalInMilliSeconds = 
+            this.state.mainEnt.CommonX && 
+                this.state.mainEnt.CommonX.allFire && 
+                    this.state.mainEnt.CommonX.allFire.participatesRestIntervalInMilliSeconds;
+
+        const restUrl = 
+            this.state.mainEnt.CommonX && 
+                this.state.mainEnt.CommonX.allFire && 
+                    this.state.mainEnt.CommonX.allFire.participatesRestQuerySname;
+        
+        if (intervalInMilliSeconds && restUrl) {  
+            this.fetchParticipates();
+            this.setState({
+                participatesInterval: setInterval(this.fetchParticipates, intervalInMilliSeconds)
+            })
+        }
+    }
+
+    isSelectedAttackTypeCodeChanged(prevState) {
+        return (!prevState.selectedAttackType && this.state.selectedAttackType) || 
+                    (prevState.selectedAttackType && this.state.selectedAttackType && prevState.selectedAttackType.code !== this.state.selectedAttackType.code)
+    }
+
+    async componentDidUpdate(prevProps, prevState) {
+        if (!prevState.mainEnt && this.state.mainEnt) {
+            this.handleParticipates();
+        }
+
+        if (this.isSelectedAttackTypeCodeChanged(prevState)) {
+            if (this.state.selectedAttackType && 
+                    this.state.selectedAttackType.allowedValues && 
+                        this.state.selectedAttackType.allowedValues.length > 0) {
+
+                let modelResponse = 
+                    await EntitiesMngr.getModelByVal(this.state.selectedAttackType.allowedValues,
+                                                        this.state.mainEnt.CommonX.allFire.attackTypesDetailsModelSname);
+
+                    if (modelResponse && !Array.isArray(modelResponse)) {
+                        modelResponse = [modelResponse];
+                    }
+
+                    this.setState({attackTypeDetailsModelResponse: modelResponse})
+            } else {
                 this.setState({
-                    participatesInterval: setInterval(this.fetchParticipates, intervalInMilliSeconds)
-                })
+                    selectedAttackTypeDetails: null,
+                    attackTypeDetailsModelResponse: null
+                });
             }
         }
     }
@@ -96,8 +138,12 @@ export default class AllFire extends Component {
     
     switchOpenParticipates = newparticipates => {
         this.setState({
-            openParticipates: newparticipates,
-            selectedParticipate: null
+            openParticipates: newparticipates,            
+            selectedParticipate: null,            
+            participates: null,
+            attackTypeDetailsModelResponse: null,
+            selectedAttackType: null,
+            selectedAttackTypeDetails: null            
         })
     }
 
@@ -147,21 +193,13 @@ export default class AllFire extends Component {
                     isExternal={this.state.openParticipates === paticipatesOptions.other}
                     isSelected={item.entityId === this.state.selectedParticipate}
                     onParticiapteClick={this.selectParticipate}
-                    participateId={item.entityId}
+                    data={item}
+                    id={item.entityId}
                 />
             );
         }        
 
         return <div className={`all-fire-my-participates-wrapper`}>{res}</div>;
-    }
-
-    otherSuggestedParticipatesClick = () => {
-        
-        /*
-            1. clear selected my particiate
-            2. close my particiates card list and open group it to one card
-            3. open buttons
-        */
     }
 
     renderFooter() {
@@ -173,10 +211,89 @@ export default class AllFire extends Component {
         );
     }
 
+    onAttackTypeClick = selectedAttackType => {
+        let attackType = null;
+        if (!this.state.selectedAttackType || (this.state.selectedAttackType.code !== selectedAttackType.code) ) {
+            attackType = selectedAttackType
+        }
+        this.setState({selectedAttackType: attackType})
+    }
+
+    onAttackTypeDetailsClick = selectedAttackTypeDetails => {
+        let attackTypeDetails = null;
+        if (!this.state.selectedAttackTypeDetails || (this.state.selectedAttackTypeDetails.appX.model.value !== selectedAttackTypeDetails.appX.model.value) ) {
+            attackTypeDetails = selectedAttackTypeDetails
+        }
+        this.setState({selectedAttackTypeDetails: attackTypeDetails})
+    }
+
+    renderAttackDetailsFirstRow() {
+        const buttons = [];
+        const valueSetLiterals = ValueSet.getLiterals({sname: this.state.mainEnt.CommonX.allFire.attackTypesValueSetSname});
+        
+        for (const literal in valueSetLiterals) {       
+            const {code, icon, dispName} = valueSetLiterals[literal];
+            buttons.push(
+                <div 
+                     title={dispName}
+                     className={`attack-type-button ${this.state.selectedAttackType && this.state.selectedAttackType.code ===  code ? 'selected' : ''}`} 
+                     onClick={() => this.onAttackTypeClick(valueSetLiterals[literal])}
+                     key={code}>
+                        <Icon className='attack-icon' iconUri={icon}/>
+                        <span className='attack-description'>{dispName}</span>
+                </div>
+            )
+        }
+        return (
+            <div className='external-assist-attack-first-row-wrapper'>
+                {buttons}
+            </div>
+        )
+    }
+
+    renderAttackDetailsSecondRow() {
+        const buttons = [];
+        const {attackTypeDetailsModelResponse} = this.state;
+        attackTypeDetailsModelResponse && attackTypeDetailsModelResponse.forEach(item => {
+            buttons.push(
+                <div 
+                     title={item.appX.base.dispName}
+                     className={`attack-type-details-button ${this.state.selectedAttackTypeDetails && this.state.selectedAttackTypeDetails.appX.model.value ===  item.appX.model.value ? 'selected' : ''}`} 
+                     onClick={() => this.onAttackTypeDetailsClick(item)}
+                     key={item.appX.model.value}>
+                        <Icon className='attack-icon' iconUri={item.appX.base.icons && item.appX.base.icons[0]}/>
+                        <span className='attack-description'>{item.appX.base.dispName}</span>
+                </div>
+            )
+        })                 
+        
+        if (buttons.length === 0) return null;
+
+        return (
+            <div className='external-assist-attack-second-row-wrapper'>
+                {buttons}
+            </div>
+        )
+    }
+
+    renderAttackDetails() {
+        if (this.state.openParticipates === paticipatesOptions.other) {
+            return (
+                <>
+                    {this.renderAttackDetailsFirstRow()}
+                    {this.renderAttackDetailsSecondRow()}
+                </>
+            )
+        }
+        return null;
+    }
+
     renderComponentBodyDraft() {
         return(
             <>
+                {this.renderAttackDetails()}
                 {this.renderSuggestedParticipatesList()}
+                {this.render}
                 {this.renderOtherSuggestedParticipatesButton()}
                 {this.renderMySuggestedParticipatesButton()}
             </>

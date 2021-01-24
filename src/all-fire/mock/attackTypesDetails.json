@@ -1,0 +1,121 @@
+{
+  "sname": "Zayad.modelLiterals.attackTypesDetails",
+  "entity": {
+     "sname": "Zayad.entity.attackTypesDetails"
+  },
+  "app": "Zayad",
+  "schema": {
+     "literals": [
+        {
+           "appX": {
+              "base": {
+                 "dispName": "אדם",
+                 "icons": ["./assets/missionType.svg"]
+              },
+              "model": {
+                 "value": 1
+              }
+           }
+        },
+        {
+           "appX": {
+              "base": {
+                 "dispName": "חיה",
+                 "icons": ["./assets/missionType.svg"]
+              },
+              "model": {
+                 "value": 2
+              }
+           }
+        },
+        {
+           "appX": {
+              "base": {
+                 "dispName": "ציפור",
+                 "icons": ["./assets/missionType.svg"]
+              },
+              "model": {
+                 "value": 3
+              }
+           }
+        },
+        {
+           "appX": {
+              "base": {
+                 "dispName": "חלון",
+                 "icons": ["./assets/missionType.svg"]
+              },
+              "model": {
+                 "value": 4
+              }
+           }
+        },
+        {
+           "appX": {
+              "base": {
+                 "dispName": "שטח",
+                 "icons": ["./assets/missionType.svg"]
+              },
+              "model": {
+                 "value": 5
+              }
+           }
+        },
+        {
+           "appX": {
+              "base": {
+                 "dispName": "מחבל",
+                 "icons": ["./assets/missionType.svg"]
+              },
+              "model": {
+                 "value": 6
+              }
+           }
+        },
+        {
+           "appX": {
+              "base": {
+                 "dispName": "איש שלג",
+                 "icons": ["./assets/missionType.svg"]
+              },
+              "model": {
+                 "value": 7
+              }
+           }
+        },
+        {
+           "appX": {
+              "base": {
+                 "dispName": "פרפר",
+                 "icons": ["./assets/missionType.svg"]
+              },
+              "model": {
+                 "value": 8
+              }
+           }
+        },
+        {
+           "appX": {
+              "base": {
+                 "dispName": "מבנה",
+                 "icons": ["./assets/missionType.svg"]
+              },
+              "model": {
+                 "value": 9
+              }
+           }
+        },
+        {
+           "appX": {
+              "base": {
+                 "dispName": "טרוריסט",
+                 "icons": ["./assets/missionType.svg"]
+              },
+              "model": {
+                 "value": 10
+              }
+           }
+        }
+    ]
+  }
+}

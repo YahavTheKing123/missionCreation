@@ -5,14 +5,14 @@
             "mainIcon": "./assets/mission.svg",
             "seconaryIconTop": "./assets/wifi.svg",
             "seconaryIconBottom": "./assets/shield.svg",
-            "mainText": "כוח דלתא",
+            "mainText": "111כוח דלתא",
             "secondaryText": "מרחק עלום",
             "infoText1": "מרחבי",
             "infoText2": "לא מוכן"
         },
         {
             "entityId": "2",
-            "mainIcon": "./assets/mission.svg",
+            "mainIcon": "./assets/tank.svg",
             "seconaryIconTop": "./assets/wifi.svg",
             "seconaryIconBottom": "./assets/shield.svg",
             "mainText": "כוח דלתא",
