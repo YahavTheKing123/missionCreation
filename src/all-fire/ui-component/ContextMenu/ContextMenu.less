@@ -2,14 +2,19 @@
     position: fixed;    
     font-size: 2rem;
     color: #4C657F;    
-    z-index: 1;
+    z-index: 9999;
     background: #FFFFFF;
     box-shadow: 0 0 16px 0 rgba(0,0,0,0.33);
     border-radius: 17px;    
     display: flex;
     transform: translate(-50%,50%);
     max-width: 400px;
-    overflow-x: auto;
+    overflow-x: auto;    
+}
+
+.ContextMenuWrapper.vertical {
+    flex-direction: column;
+    transform: translate(-100%);
 }
 
 .all-fire-context-menu-item {

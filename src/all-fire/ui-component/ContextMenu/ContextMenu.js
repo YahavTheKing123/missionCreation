@@ -21,8 +21,9 @@ export default class ContextMenu extends Component {
     }
 
     render() {
+        const verticalClass = this.props.openVertical ? 'vertical' : ''
         return (
-            <div ref={this.wrapperRef} className={'ContextMenuWrapper'} style={{top: this.props.top, left: this.props.left}}>
+            <div ref={this.wrapperRef} className={`ContextMenuWrapper ${verticalClass}`} style={{top: this.props.top, left: this.props.left}}>
                 {this.props.children}
             </div>
         )

@@ -1,0 +1,15 @@
+{
+    "sname": "Zayad.valueSet.missionTypes",
+    "schema": {
+      "literals": {
+        "dry": {
+          "code": 1,
+          "dispName": "יבש"
+        },
+        "wet": {
+          "code": 2,
+          "dispName": "רטוב"          
+        }
+      }
+    }
+  }

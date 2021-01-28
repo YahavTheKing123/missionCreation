@@ -1,0 +1,19 @@
+{
+    "sname": "Zayad.valueSet.safetyTypes",
+    "schema": {
+      "literals": {
+        "safe": {
+          "code": 1,
+          "dispName": "בטיחות תקינה",
+          "color": "#2df4b1",
+          "icon": "./assets/conus-green.svg"
+        },
+        "unsafe": {
+          "code": 2,
+          "dispName": "בטיחות לא תקינה",
+          "color": "#F15858",
+          "icon": "./assets/conus-red.svg"
+        }
+      }
+    }
+  }

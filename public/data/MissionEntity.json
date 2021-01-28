@@ -7,21 +7,40 @@
             "mainHeaderRightButtomTextBGColor": "#000000",
 
             "mainHeaderRightMainIcon": "./assets/tank.svg",
-            "mainHeaderRightSecondaryIcon": "./assets/missionType.svg",
+            "mainHeaderRightSecondaryIcon": "./assets/rocket.svg",
             "mainHeaderRightSideIcon": "./assets/missionType.svg",
                         
-            "entityStateValue": 1,
+            "entityStateValue": 3,
 
             "mainHeaderTextRow1Col1": "גונזו משהו",
             "mainHeaderTextRow1Col2": "תקיפה",
+            "mainHeaderTextRow1Col3": "04:47",
             "mainHeaderTextRow2Col1": "שטח פתוח",
             "mainHeaderTextRow2Col2": "03:22",
             "mainHeaderTextRow2Col2BGColor": "",
 
             "participatesRestQuerySname": "Zayad.restQuery.allFireGetParticipates",
-            "participatesRestIntervalInMilliSeconds": 10000,
+            "participatesRestIntervalInMilliSeconds": 2000,
             "attackTypesValueSetSname": "Zayad.valueSet.attackTypes",
-            "attackTypesDetailsModelSname": "Zayad.entity.attackTypesDetails"
+            "attackTypesDetailsModelSname": "Zayad.entity.attackTypesDetails",
+            
+            "missionTypeValueSetSname": "Zayad.valueSet.missionTypes",
+            "missionType": 1,
+
+            "safetyValueSetSname": "Zayad.valueSet.safetyTypes",
+            "bodyCardRightSectionMainIcon": "./assets/margema.svg",
+            "safetyType": 1,
+            "bodyCardMainSectionTextRow1Col1": "גונזו משהו",
+            "bodyCardMainSectionTextRow1Col2": "סוג נשק",
+            "bodyCardMainSectionTextRow1Col3": "סוג נשק",
+            "bodyCardMainSectionTextRow1Col3TextColor": "סוג נשק",
+            "bodyCardMainSectionTextRow1Col3BGColor": "סוג נשק",
+            "bodyCardMainSectionTextRow1Col4": "סוג נשק",
+            "bodyCardMainSectionTextRow2Col1": "ציריך",
+            "bodyCardMainSectionTextRow2Col2": "נפיץ",
+            "bodyCardMainSectionTextRow2Col3": "20",
+            "bodyCardMainSectionTextRow2Col4": "נפץ",
+            "bodyCardMainSectionTextRow2Col5": "31"
         }
     }
 }

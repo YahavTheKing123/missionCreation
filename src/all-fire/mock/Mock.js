@@ -1,10 +1,14 @@
 import attackTypes from './attackTypes.json';
 import attackTypesDetails from './attackTypesDetails.json';
+import missionTypes from './missionTypes.json';
+import safetyTypes from './safetyTypes.json';
 
 
 const map = new Map([
     ['attackTypes', attackTypes],
     ['attackTypesDetails', attackTypesDetails],
+    ['missionTypes', missionTypes],
+    ['safetyTypes', safetyTypes],
 ])
 
 export const ValueSet = {
@@ -13,6 +17,18 @@ export const ValueSet = {
         const fileName = sname.split('.')[2];
         const jsObj = map.get(fileName)
         return jsObj.schema.literals;
+    },
+    getValue: ({sname}, code) => {
+        const fileName = sname.split('.')[2];
+        const jsObj = map.get(fileName)
+        const literals = jsObj.schema.literals;
+        let returnObj = null;
+        Object.keys(literals).forEach( item => {
+            if (literals[item].code === code) {
+                returnObj = literals[item]
+            };
+        })
+        return returnObj;
     }
 }
 

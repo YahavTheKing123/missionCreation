@@ -7,7 +7,7 @@
             "seconaryIconBottom": "./assets/shield.svg",
             "mainText": "111כוח דלתא",
             "secondaryText": "מרחק עלום",
-            "infoText1": "מרחבי",
+            "infoText1": "סיוע מרחבי",
             "infoText2": "לא מוכן"
         },
         {
@@ -17,8 +17,9 @@
             "seconaryIconBottom": "./assets/shield.svg",
             "mainText": "כוח דלתא",
             "secondaryText": "מרחק עלום",
-            "infoText1": "מרחבי",
-            "infoText2": "לא מוכן"
+            "infoText1": "סיוע ישיר",
+            "infoText2": "לא מוכן",
+            "infoText2Color": "#F15858"
         },
         {
             "entityId": "3",
@@ -27,8 +28,11 @@
             "seconaryIconBottom": "./assets/shield.svg",
             "mainText": "כוח דלתא",
             "secondaryText": "מרחק עלום",
-            "infoText1": "מרחבי",
-            "infoText2": "לא מוכן"
+            "infoText1": "סיוע ישיר",
+            "infoText1Color": "#000000",
+            "infoText1BgColor": "#F0E473",
+            "infoText2": "",
+            "infoText2Color": "#F15858"
         },
         {
             "entityId": "4",
@@ -37,8 +41,8 @@
             "seconaryIconBottom": "./assets/shield.svg",
             "mainText": "כוח דלתא",
             "secondaryText": "מרחק עלום",
-            "infoText1": "מרחבי",
-            "infoText2": "לא מוכן"
+            "infoText1": "",
+            "infoText2": ""
         }
     ]
 }

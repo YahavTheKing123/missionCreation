@@ -13,6 +13,10 @@
         "manage": {
           "code": 3,
           "dispName": "Manage"
+        },
+        "beforeFire": {
+          "code": 4,
+          "dispName": "Before Fire"
         }
       }
     }
