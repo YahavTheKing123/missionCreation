@@ -280,16 +280,31 @@ export default class AllFire extends Component {
         let res = [];
 
         if (participates) {
-            res = participates.map( item => 
-                <ParticipateCard
-                    key={item.entityId}
-                    cardSize={this.state.openParticipates === paticipatesOptions.other ? participatesCardSize.small : participatesCardSize.medium}
-                    isCanBeSelected={true}
-                    isSelected={item.entityId === this.state.selectedParticipate}
-                    onParticiapteClick={this.selectParticipate}
-                    data={item}
-                    id={item.entityId}                    
+            res = participates.map(item => {
+                const data = {
+                    bodyCardRightSectionMainIcon: item.mainIcon,                                        
+                    bodyCardRightSectionTopRightIcon: item.seconaryIconTop,
+                    bodyCardRightSectionMiddleRightIcon: item.seconaryIconBottom,
+        
+                    bodyCardMainSectionRow1Col1Text: item.mainText,
+                    bodyCardMainSectionRow1Col2Text: item.secondaryText,
+                    bodyCardMainSectionRow1Col3Text: item.infoText1,
+                    bodyCardMainSectionRow1Col3TextColor: item.infoText1Color,
+                    bodyCardMainSectionRow1Col3TextBGColor: item.infoText1BgColor,
+                    bodyCardMainSectionRow1Col4Text: item.infoText2,
+                    bodyCardMainSectionRow1Col4TextColor: item.infoText2Color,                    
+                }
+                return (
+                    <ParticipateCard
+                        key={item.entityId}
+                        cardSize={this.state.openParticipates === paticipatesOptions.other ? participatesCardSize.small : participatesCardSize.medium}
+                        isCanBeSelected={true}
+                        isSelected={item.entityId === this.state.selectedParticipate}
+                        onParticiapteClick={this.selectParticipate}
+                        data={data}
+                        id={item.entityId}                    
                 />
+                )}
             );
         }        
 
@@ -454,31 +469,18 @@ export default class AllFire extends Component {
 
     renderMissionParticipate() {
 
-        const data = this.getEntityBehaviorData();
+        const data = {...this.getEntityBehaviorData()};
 
-        const item = {
-            mainIcon: data.bodyCardRightSectionMainIcon,
-            rightSectionBottomIcon: ValueSet.getValue({sname: data.safetyValueSetSname}, data.safetyType).icon,
-            rightSectionBottomText: ValueSet.getValue({sname: data.safetyValueSetSname}, data.safetyType).dispName,
-            rightSectionBottomTextColor: ValueSet.getValue({sname: data.safetyValueSetSname}, data.safetyType).color,
-            mainText: data.bodyCardMainSectionTextRow1Col1,
-            secondaryText: data.bodyCardMainSectionTextRow1Col2,
-            infoText1:
-            infoText1BgColor:
-            infoText1Color:
-            row2text1: data.bodyCardMainSectionTextRow2Col1,
-            row2text2: data.bodyCardMainSectionTextRow2Col2,
-            row2text3: data.bodyCardMainSectionTextRow2Col3,
-            row2text4: data.bodyCardMainSectionTextRow2Col4,
-            row2text5: data.bodyCardMainSectionTextRow2Col5,
-        }
+        data.bodyCardRightSectionBottomIcon = ValueSet.getValue({sname: data.safetyValueSetSname}, data.safetyType).icon;
+        data.bodyCardRightSectionBottomText = ValueSet.getValue({sname: data.safetyValueSetSname}, data.safetyType).dispName;
+        data.bodyCardRightSectionBottomTextColor = ValueSet.getValue({sname: data.safetyValueSetSname}, data.safetyType).color;
 
         return (
-                <ParticipateCard
-                    key={item.entityId}
+                <ParticipateCard                    
                     isCanBeSelected={false}                    
                     isSelected={false}                    
-                    data={item} 
+                    data={data} 
+                    isEditable
                     cardSize={participatesCardSize.large}                   
                 />
         );

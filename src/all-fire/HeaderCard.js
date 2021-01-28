@@ -34,12 +34,12 @@ export default class HeaderCard extends Component {
     }
 
     renderHeaderRightImages(data) {
-        const {mainHeaderRightMainIcon, mainHeaderRightSecondaryIcon, mainHeaderRightSideIcon} = data;
+        const {headerCardRightSectionMainIcon, headerCardRightSectionSecondaryIcon, headerCardRightSectionSideIcon} = data;
         return (
             <div className='all-fire-header-right-icons-wrapper'>
-                {mainHeaderRightMainIcon ? <Icon iconUri={mainHeaderRightMainIcon} className='all-fire-header-right-main-icon' style={{width: '5rem', height: '5rem'}} /> : null}
-                {mainHeaderRightSecondaryIcon ? <Icon iconUri={mainHeaderRightSecondaryIcon} className='all-fire-header-right-main-icon' style={{width: '2rem', height: '2rem'}}/> : null}
-                {mainHeaderRightSideIcon ? <Icon iconUri={mainHeaderRightSideIcon} className='all-fire-header-right-side-left-icon' style={{width: '2.5rem', height: '2.5rem'}}/> : null}
+                {headerCardRightSectionMainIcon ? <Icon iconUri={headerCardRightSectionMainIcon} className='all-fire-header-right-main-icon' style={{width: '5rem', height: '5rem'}} /> : null}
+                {headerCardRightSectionSecondaryIcon ? <Icon iconUri={headerCardRightSectionSecondaryIcon} className='all-fire-header-right-main-icon' style={{width: '2rem', height: '2rem'}}/> : null}
+                {headerCardRightSectionSideIcon ? <Icon iconUri={headerCardRightSectionSideIcon} className='all-fire-header-right-side-left-icon' style={{width: '2.5rem', height: '2.5rem'}}/> : null}
             </div>
         )
     }
@@ -68,26 +68,26 @@ export default class HeaderCard extends Component {
                     <div className='minimize-icon'></div>
                 </a>
                 <div className='all-fire-header-right'>
-                    <span className='all-fire-header-right-top-text'>{data.mainHeaderRightTopText}</span>
+                    <span className='all-fire-header-right-top-text'>{data.headerCardRightSectionTopText}</span>
                     {this.renderHeaderRightImages(data)}
-                    <span className='all-fire-header-buttom-top-text' style={{backgroundColor: data.mainHeaderRightButtomTextBGColor}}>
-                        {data.mainHeaderRightButtomText}
+                    <span className='all-fire-header-buttom-top-text' style={{backgroundColor: data.headerCardRightSectionButtomTextBGColor}}>
+                        {data.headerCardRightSectionButtomText}
                     </span>
                 </div>
                 <div className='all-fire-header-center'>
                     <div className='all-fire-header-center-row'>
-                        <span className='main-text'>{data.mainHeaderTextRow1Col1}</span>
-                        <span>{data.mainHeaderTextRow1Col2}</span>
+                        <span className='main-text'>{data.headerCardMainSectionRow1Col1Text}</span>
+                        <span>{data.headerCardMainSectionRow1Col2Text}</span>
                     </div>
                     <div className='all-fire-header-center-row'>
-                        <span>{data.mainHeaderTextRow2Col1}</span>
+                        <span>{data.headerCardMainSectionRow2Col1Text}</span>
                         {
-                            data.mainHeaderTextRow2Col2 ? 
+                            data.headerCardMainSectionRow2Col2Text ? 
                                 <span className='timer-wrapper'>
-                                    <span className='timer-icon-wrapper' style={{backgroundColor: data.mainHeaderTextRow2Col2BGColor}}>
+                                    <span className='timer-icon-wrapper' style={{backgroundColor: data.headerCardMainSectionRow2Col2TextBGColor}}>
                                         <Icon className={'timer-icon'} iconUri={require('./assets/timer.svg')}/>
                                     </span>
-                                    <span className='timer-text'>{data.mainHeaderTextRow2Col2}</span>
+                                    <span className='timer-text'>{data.headerCardMainSectionRow2Col2Text}</span>
                                 </span> : 
                             null
                         }

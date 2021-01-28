@@ -2,22 +2,42 @@
     "_id": "12345",
     "CommonX": {
         "allFire": {
-            "mainHeaderRightTopText": "אלי",
-            "mainHeaderRightButtomText": "עומר",
-            "mainHeaderRightButtomTextBGColor": "#000000",
+            "entityStateValue": 2,
 
-            "mainHeaderRightMainIcon": "./assets/tank.svg",
-            "mainHeaderRightSecondaryIcon": "./assets/rocket.svg",
-            "mainHeaderRightSideIcon": "./assets/missionType.svg",
+            "headerCardRightSectionTopText": "אלי",
+            "headerCardRightSectionButtomText": "עומר",
+            "headerCardRightSectionButtomTextBGColor": "#000000",
+            "headerCardRightSectionMainIcon": "./assets/tank.svg",
+            "headerCardRightSectionSecondaryIcon": "./assets/rocket.svg",
+            "headerCardRightSectionSideIcon": "./assets/missionType.svg",
                         
-            "entityStateValue": 3,
+            "headerCardMainSectionRow1Col1Text": "גונזו משהו",
+            "headerCardMainSectionRow1Col2Text": "תקיפה",
+            "headerCardMainSectionRow1Col3Text": "04:47",
+            "headerCardMainSectionRow2Col1Text": "שטח פתוח",
+            "headerCardMainSectionRow2Col2Text": "03:22",
+            "headerCardMainSectionRow2Col2TextBGColor": "",
+            
+            "bodyCardRightSectionTopRightIcon": "",
+            "bodyCardRightSectionMiddleRightIcon": "",
+            "bodyCardRightSectionMainIcon": "./assets/margema.svg",
+            "bodyCardRightSectionBottomIcon": "",
+            "bodyCardRightSectionBottomText": "",
+            "bodyCardRightSectionBottomTextColor": "",
 
-            "mainHeaderTextRow1Col1": "גונזו משהו",
-            "mainHeaderTextRow1Col2": "תקיפה",
-            "mainHeaderTextRow1Col3": "04:47",
-            "mainHeaderTextRow2Col1": "שטח פתוח",
-            "mainHeaderTextRow2Col2": "03:22",
-            "mainHeaderTextRow2Col2BGColor": "",
+            "bodyCardMainSectionRow1Col1Text": "גונזו משהו",
+            "bodyCardMainSectionRow1Col2Text": "סוג נשק",
+            "bodyCardMainSectionRow1Col3Text": "סוג נשק",
+            "bodyCardMainSectionRow1Col3TextColor": "#ffffff",
+            "bodyCardMainSectionRow1Col3TextBGColor": "black",
+            "bodyCardMainSectionRow1Col4Text": "לא מוכן",
+            "bodyCardMainSectionRow1Col4TextColor": "#f15858",
+
+            "bodyCardMainSectionRow2Col1Text": "ציריך",
+            "bodyCardMainSectionRow2Col2Text": "נפיץ",
+            "bodyCardMainSectionRow2Col3Text": "20",
+            "bodyCardMainSectionRow2Col4Text": "נפץ",
+            "bodyCardMainSectionRow2Col5Text": "31",
 
             "participatesRestQuerySname": "Zayad.restQuery.allFireGetParticipates",
             "participatesRestIntervalInMilliSeconds": 2000,
@@ -27,20 +47,8 @@
             "missionTypeValueSetSname": "Zayad.valueSet.missionTypes",
             "missionType": 1,
 
-            "safetyValueSetSname": "Zayad.valueSet.safetyTypes",
-            "bodyCardRightSectionMainIcon": "./assets/margema.svg",
-            "safetyType": 1,
-            "bodyCardMainSectionTextRow1Col1": "גונזו משהו",
-            "bodyCardMainSectionTextRow1Col2": "סוג נשק",
-            "bodyCardMainSectionTextRow1Col3": "סוג נשק",
-            "bodyCardMainSectionTextRow1Col3TextColor": "סוג נשק",
-            "bodyCardMainSectionTextRow1Col3BGColor": "סוג נשק",
-            "bodyCardMainSectionTextRow1Col4": "סוג נשק",
-            "bodyCardMainSectionTextRow2Col1": "ציריך",
-            "bodyCardMainSectionTextRow2Col2": "נפיץ",
-            "bodyCardMainSectionTextRow2Col3": "20",
-            "bodyCardMainSectionTextRow2Col4": "נפץ",
-            "bodyCardMainSectionTextRow2Col5": "31"
+            "safetyValueSetSname": "Zayad.valueSet.safetyTypes",            
+            "safetyType": 1
         }
     }
 }

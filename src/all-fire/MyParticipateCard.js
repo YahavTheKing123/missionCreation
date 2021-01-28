@@ -10,21 +10,31 @@ export const participatesCardSize = {
 export default class MyParticipateCard extends Component {
 
     renderCardRightImages(selectedClass) {
+
         const sizeClass = this.props.cardSize ? this.props.cardSize : participatesCardSize.small;
-        const {data: {seconaryIconBottom, mainIcon, seconaryIconTop, rightSectionBottomIcon, rightSectionBottomText, rightSectionBottomTextColor}} = this.props;
+        const {
+            data: {
+                bodyCardRightSectionMiddleRightIcon, 
+                bodyCardRightSectionMainIcon, 
+                bodyCardRightSectionTopRightIcon,
+                bodyCardRightSectionBottomIcon, 
+                bodyCardRightSectionBottomText, 
+                bodyCardRightSectionBottomTextColor
+            }
+        } = this.props;
 
         return (
             <div className={`my-participate-card-right ${sizeClass} ${selectedClass}`}>
                 <div className='right-images'>
-                    {seconaryIconTop ? <Icon className='top-image' iconUri={seconaryIconTop} style={{width: '2rem', height: '2rem'}}/> : null}
-                    {seconaryIconBottom ? <Icon className='bottom-image' iconUri={seconaryIconBottom} style={{width: '2rem', height: '2rem'}}/> : null}
+                    {bodyCardRightSectionTopRightIcon ? <Icon className='top-image' iconUri={bodyCardRightSectionTopRightIcon} style={{width: '2rem', height: '2rem'}}/> : null}
+                    {bodyCardRightSectionMiddleRightIcon ? <Icon className='bottom-image' iconUri={bodyCardRightSectionMiddleRightIcon} style={{width: '2rem', height: '2rem'}}/> : null}
                 </div>
                 <span className='main-image-wrapper'>
-                    <Icon className='main-image' iconUri={mainIcon} style={{width: '4rem', height: '4rem'}}/>
-                    {rightSectionBottomText ? 
-                        <span className='bottom-text' style={{color: rightSectionBottomTextColor}}>
-                            <Icon className='bottom-icon' iconUri={rightSectionBottomIcon}/>
-                            {rightSectionBottomText}
+                    <Icon className='main-image' iconUri={bodyCardRightSectionMainIcon} style={{width: '4rem', height: '4rem'}}/>
+                    {bodyCardRightSectionBottomText ? 
+                        <span className='bottom-text' style={{color: bodyCardRightSectionBottomTextColor}}>
+                            <Icon className='bottom-icon' iconUri={bodyCardRightSectionBottomIcon}/>
+                            {bodyCardRightSectionBottomText}
                         </span> 
                         : null
                     }
@@ -53,37 +63,40 @@ export default class MyParticipateCard extends Component {
                 {this.renderCardRightImages(selectedClass)}                
                 <div className='my-participate-card-center'>
                     <div className='my-participate-card-center-row'>
-                        <span className='card-row-item main-text' title={data.mainText}>
-                            {data.mainText}
+                        <span className='card-row-item main-text' title={data.bodyCardMainSectionRow1Col1Text}>
+                            {data.bodyCardMainSectionRow1Col1Text}
                         </span>                        
-                        <span className='card-row-item secondary-text' title={data.secondaryText}>{data.secondaryText}</span>
+                        <span className='card-row-item secondary-text' title={data.bodyCardMainSectionRow1Col2Text}>{data.bodyCardMainSectionRow1Col2Text}</span>
                         <span className='card-row-item info-text1' 
-                            title={data.infoText1}
-                            style={{backgroundColor: data.infoText1BgColor, color: data.infoText1Color}}>
-                                {data.infoText1}
+                            title={data.bodyCardMainSectionRow1Col3Text}
+                            style={{backgroundColor: data.bodyCardMainSectionRow1Col3TextBGColor, color: data.bodyCardMainSectionRow1Col3TextColor}}>
+                                {data.bodyCardMainSectionRow1Col3Text}
                         </span>
                         <span className='card-row-item info-text2' 
-                            title={data.infoText2}
-                            style={{color: data.infoText2Color}}>
-                                {data.infoText2}
+                            title={data.bodyCardMainSectionRow1Col4Text}
+                            style={{color: data.bodyCardMainSectionRow1Col4TextColor}}>
+                                {data.bodyCardMainSectionRow1Col4Text}
                         </span>
                     </div>
-                    {data.row2text1 ? 
+                    {data.bodyCardMainSectionRow2Col1Text ? 
                         <div className='my-participate-card-center-row'>
                             <div className='second-row-wrapper'>
                                 <Icon iconUri={require('./assets/rocket.svg')} className='rocket-icon'/>
-                                <span className='card-row-item'>{data.row2text1}</span>
-                                <span className='card-row-item'>{data.row2text2}</span>
-                                <span className='card-row-item'>{data.row2text3}</span>
-                                <span className='card-row-item'>{data.row2text4}</span>
-                                <span className='card-row-item'>{data.row2text5}</span>
+                                <span className='card-row-item'>{data.bodyCardMainSectionRow2Col1Text}</span>
+                                <span className='card-row-item'>{data.bodyCardMainSectionRow2Col2Text}</span>
+                                <span className='card-row-item'>{data.bodyCardMainSectionRow2Col3Text}</span>
+                                <span className='card-row-item'>{data.bodyCardMainSectionRow2Col4Text}</span>
+                                <span className='card-row-item'>{data.bodyCardMainSectionRow2Col5Text}</span>
                             </div>
                         </div> :
                     null}
                 </div>
-                <div className='my-participate-card-left'>
-                    {this.renderExpandButton()}
-                </div>
+                {
+                    this.props.isEditable ? 
+                        <div className='my-participate-card-left'>
+                            {this.renderExpandButton()}
+                        </div> : null
+                }
             </div>
         )
     }

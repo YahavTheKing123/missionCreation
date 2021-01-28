@@ -18,6 +18,8 @@
             "mainText": "כוח דלתא",
             "secondaryText": "מרחק עלום",
             "infoText1": "סיוע ישיר",
+            "infoText1Color": "#000000",
+            "infoText1BgColor": "#F0E473",
             "infoText2": "לא מוכן",
             "infoText2Color": "#F15858"
         },
