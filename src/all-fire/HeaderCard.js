@@ -70,8 +70,8 @@ export default class HeaderCard extends Component {
                 <div className='all-fire-header-right'>
                     <span className='all-fire-header-right-top-text'>{data.headerCardRightSectionTopText}</span>
                     {this.renderHeaderRightImages(data)}
-                    <span className='all-fire-header-buttom-top-text' style={{backgroundColor: data.headerCardRightSectionButtomTextBGColor}}>
-                        {data.headerCardRightSectionButtomText}
+                    <span className='all-fire-header-buttom-top-text' style={{backgroundColor: data.headerCardRightSectionBottomTextBGColor}}>
+                        {data.headerCardRightSectionBottomText}
                     </span>
                 </div>
                 <div className='all-fire-header-center'>

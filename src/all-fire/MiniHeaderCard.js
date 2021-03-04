@@ -4,13 +4,27 @@ import { ValueSet } from './mock/Mock';
 
 export default class HeaderCard extends Component {
 
-
-    getButtonText() {        
+    renderButton() {
         const missionType = ValueSet.getValue({sname: this.props.entity.CommonX.allFire.missionTypeValueSetSname}, this.props.missionType);
+
+        let btnText = '';
+        let btnTextColor = null;
+        let btnTextBGColor = null;
+
         if (missionType) {
-            return missionType.dispName;
+            btnText = missionType.dispName;
+            btnTextColor = missionType.textColor;
+            btnTextBGColor = missionType.backgroundColor;
         }
-        return '';
+        
+
+        return (
+                <button 
+                    className='all-fire-mini-header-button'
+                    style={{backgroundColor: btnTextBGColor, color: btnTextColor}}
+                    onClick={this.props.onButtonClick.bind(this, this.props.missionType)}>{btnText}
+                </button>
+        )
     }
 
     render() {
@@ -33,7 +47,7 @@ export default class HeaderCard extends Component {
                         {headerCardMainSectionRow1Col3Text}
                     </span> : null }
                 </div>
-                <button className='all-fire-mini-header-button' onClick={this.props.onButtonClick.bind(this, this.props.missionType)}>{this.getButtonText()}</button>
+                {this.renderButton()}
             </div>
         )
     }

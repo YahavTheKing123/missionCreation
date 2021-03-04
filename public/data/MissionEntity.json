@@ -4,11 +4,11 @@
         "allFire": {
             "entityStateValue": 2,
 
-            "headerCardRightSectionTopText": "אלי",
-            "headerCardRightSectionButtomText": "עומר",
-            "headerCardRightSectionButtomTextBGColor": "#000000",
-            "headerCardRightSectionMainIcon": "./assets/tank.svg",
-            "headerCardRightSectionSecondaryIcon": "./assets/rocket.svg",
+            "headerCardRightSectionTopText": "יבש",
+            "headerCardRightSectionBottomText": "חדשה",
+            "headerCardRightSectionBottomTextBGColor": "#000000",
+            "headerCardRightSectionMainIcon": "./assets/mission.svg",
+            "headerCardRightSectionSecondaryIcon": "./assets/missionType.svg",
             "headerCardRightSectionSideIcon": "./assets/missionType.svg",
                         
             "headerCardMainSectionRow1Col1Text": "גונזו משהו",
@@ -45,10 +45,14 @@
             "attackTypesDetailsModelSname": "Zayad.entity.attackTypesDetails",
             
             "missionTypeValueSetSname": "Zayad.valueSet.missionTypes",
-            "missionType": 1,
+            "missionType": 2,
 
             "safetyValueSetSname": "Zayad.valueSet.safetyTypes",            
-            "safetyType": 1
+            "safetyType": 1,
+
+            "abortCommandSname": "",
+            "approveCommandSname": "",
+            "editMissionCommandSname": ""
         }
     }
 }

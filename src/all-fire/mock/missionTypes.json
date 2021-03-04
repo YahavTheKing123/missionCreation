@@ -8,7 +8,9 @@
         },
         "wet": {
           "code": 2,
-          "dispName": "רטוב"          
+          "dispName": "רטוב",
+          "backgroundColor": "#F6EA75",
+          "textColor": "#192A3C"
         }
       }
     }

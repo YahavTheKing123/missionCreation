@@ -330,11 +330,11 @@
   align-items: center;
 }
 .all-fire-wrapper .my-participate-card-center-row .second-row-wrapper {
-  background: #09121B;
+  background: var(--my-particiapate-card-plan-bg-color);
   border-radius: 20rem;
   display: flex;
   align-items: center;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.7rem;
   margin-top: 0.5rem;
 }
 .all-fire-wrapper .my-participate-card-center-row .card-row-item {

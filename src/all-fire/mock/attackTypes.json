@@ -4,7 +4,7 @@
       "literals": {
         "boom": {
           "code": 1,
-          "dispName": "מה קורה",
+          "dispName": "תקיפה",
           "icon": "./assets/mission.svg",
           "allowedValues": [1,2,3]
         },

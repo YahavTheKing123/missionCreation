@@ -16,7 +16,7 @@
         },
         "beforeFire": {
           "code": 4,
-          "dispName": "Before Fire"
+          "dispName": "Manage Before Fire"
         }
       }
     }
