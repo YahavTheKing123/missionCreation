@@ -9,6 +9,7 @@ import lodash from 'lodash';
 import Icon from './ui-component/Icon/Icon';
 import {ValueSet} from './mock/Mock';
 import {EntitiesMngr} from './mock/Mock';
+import SwipeButton from './ui-component/SwipeButton/SwipeButton';
 
 export const widgetSizes = {
     default: 'default',
@@ -311,11 +312,63 @@ export default class AllFire extends Component {
         return <div className={`all-fire-my-participates-wrapper`}>{res}</div>;
     }
 
+    swipeEnd = e => {
+        console.log(+e.target.value)
+        if (+e.target.value >= +e.target.max) {
+            //exectue command;
+            console.log('success')
+            e.target.value = 0
+        } else {
+            this.rafID = window.requestAnimationFrame(this.returnSwipeToStart);
+        }
+
+    }
+
+    returnSwipeToStart = () => {    
+        const inputRangeElement = document.getElementById('swipeInputId');
+
+        if(inputRangeElement.value > 0) {
+            inputRangeElement.value = inputRangeElement.value - 12;
+            window.requestAnimationFrame(this.returnSwipeToStart);   
+        }
+    }
+
+
+    renderSlideButtonOld() {
+        return (
+            <div className='command-slider-wrapper'>
+                <input 
+                    id='swipeInputId'
+                    className='command-slider-input'
+                    type='range' 
+                    defaultValue='0' 
+                    min='0' 
+                    max='150'                    
+                    onMouseUp={this.swipeEnd}
+                    onTouchEnd={this.swipeEnd}
+                />
+                <span className='command-slider-description'>החלק לאישור ירי</span>
+            </div>
+        )
+    }
+
+    renderSlideButton() {
+        return (
+            <SwipeButton 
+                text='החלק לאישור ירי'
+                color='#F6EA75'
+                onSuccess={()=>console.log('success')}
+            />
+        )
+    }
+
     renderFooter() {
         return (
             <div className='all-fire-footer-wrapper'>
                 <button className='all-fire-button'>{'בטל משימה'}</button>
-                <button className='all-fire-button primary disabled'>{'אשר'}</button>
+                {/*this.renderSlideButtonOld()*/}
+                {/* <button className='all-fire-button primary disabled'>{'אשר'}</button> */}
+                {this.renderSlideButton()}
             </div>
         );
     }

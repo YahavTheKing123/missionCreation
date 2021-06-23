@@ -636,3 +636,67 @@
   background-image: url(assets/more-commands.svg);
   cursor: pointer;
 }
+.command-slider-wrapper {
+  position: relative;
+  background-color: #46596D;
+  border-radius: 9px;
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.command-slider-description {
+  position: absolute;
+  /* z-index: 1; */
+  top: 50%;
+  transform: translateY(-50%);
+  right: 2rem;
+  font-size: 2.2rem;
+  color: #FFFFFF;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%);
+}
+.center-xy {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.command-slider-input {
+  width: 95%;
+  /*height: 4.6rem;*/
+  appearance: none;
+  position: relative;
+  background: inherit;
+  direction: ltr;
+}
+.command-slider-input:active::-webkit-slider-thumb {
+  appearance: none;
+  transform: scale(1.1);
+  cursor: grabbing;
+}
+.command-slider-input:focus {
+  outline: none;
+}
+.command-slider-input::-webkit-slider-thumb {
+  appearance: none;
+  display: block;
+  width: 4.6rem;
+  height: 4.6rem;
+  border-radius: 5px;
+  background-color: #F6EA75;
+  background-image: url(assets/rocket.svg);
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transform-origin: 50% 50%;
+  transform: scale(1);
+  transition: transform ease-out 100ms;
+  cursor: grab;
+}
+.command-slider-input::-webkit-slider-runnable-track {
+  height: 100%;
+  background-color: transparent;
+  z-index: 1;
+}
