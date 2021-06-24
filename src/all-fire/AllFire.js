@@ -365,7 +365,7 @@ export default class AllFire extends Component {
     renderFooter() {
         return (
             <div className='all-fire-footer-wrapper'>
-                <button className='all-fire-button'>{'בטל משימה'}</button>
+                <button className='all-fire-button' onClick={()=>console.log('cancel')}>{'בטל משימה'}</button>
                 {/*this.renderSlideButtonOld()*/}
                 {/* <button className='all-fire-button primary disabled'>{'אשר'}</button> */}
                 {this.renderSlideButton()}

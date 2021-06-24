@@ -29,6 +29,8 @@
   position: absolute;
   top: 100px;
   right: 140px;
+  transform-origin: top right;
+  transform: scale(0.8);
 }
 .all-fire-mini-header {
   position: relative;

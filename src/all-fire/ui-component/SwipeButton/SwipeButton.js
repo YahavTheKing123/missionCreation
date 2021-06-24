@@ -27,9 +27,9 @@ export default class AllFireSwipeButton extends Component {
     if(this.unmounted || this.state.unlocked) return;
     if(this.isDragging) {
       if(isTouchDevice) {
-        this.sliderLeft = Math.min(Math.max(0, e.touches[0].clientX - this.startX), this.containerWidth);
+        this.sliderLeft = Math.min(Math.max(0, (e.touches[0].clientX - this.startX) * 1.2), this.containerWidth);
       } else {
-        this.sliderLeft = Math.min(Math.max(0, e.clientX - this.startX), this.containerWidth);
+        this.sliderLeft = Math.min(Math.max(0, (e.clientX  - this.startX) * 1.2), this.containerWidth);
       }
       this.updateSliderStyle();
     }
